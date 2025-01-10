@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<export>
+<export_detail>
+	<username>TEST</username>
+	<account_currency>CAD</account_currency>
+</export_detail>
+<export_trades>
+	<trade>
+		<type>Deposit</type>
+		<buy_amount>5.00000000</buy_amount>
+		<buy_cur>SOL2</buy_cur>
+		<sell_amount></sell_amount>
+		<sell_cur></sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>SOL2</fee_cur>
+		<buy_value_in_btc>0.01256431</buy_value_in_btc>
+		<buy_value_in_fiat>1174.20963049</buy_value_in_fiat>
+		<sell_value_in_btc></sell_value_in_btc>
+		<sell_value_in_fiat></sell_value_in_fiat>
+		<trade_date>2024-04-09 16:57:17</trade_date>
+		<trade_timestamp>1712681837</trade_timestamp>
+		<tradeid>id1</tradeid>
+		<exchange>Coinbase Staking</exchange>
+		<group></group>
+		<comment></comment>
+		<added_timestamp>1715462530</added_timestamp>
+	</trade>
+	<trade>
+		<type>Deposit</type>
+		<buy_amount>10.00000000</buy_amount>
+		<buy_cur>SOL2</buy_cur>
+		<sell_amount></sell_amount>
+		<sell_cur></sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>SOL2</fee_cur>
+		<buy_value_in_btc>0.02681621</buy_value_in_btc>
+		<buy_value_in_fiat>2486.99658263</buy_value_in_fiat>
+		<sell_value_in_btc></sell_value_in_btc>
+		<sell_value_in_fiat></sell_value_in_fiat>
+		<trade_date>2024-04-05 00:17:25</trade_date>
+		<trade_timestamp>1712276245</trade_timestamp>
+		<tradeid>id2</tradeid>
+		<exchange>Coinbase Staking</exchange>
+		<group></group>
+		<comment></comment>
+		<added_timestamp>1715462530</added_timestamp>
+	</trade>
+</export_trades>
+</export>

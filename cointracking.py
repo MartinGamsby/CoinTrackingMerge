@@ -5,6 +5,7 @@ import csv
 import sys
 
 from decimal import Decimal
+from copy import copy
 
 import xml.etree.ElementTree as ET
     
@@ -14,22 +15,29 @@ import xml.etree.ElementTree as ET
 GROUP_BY_MONTH_INSTEAD_OF_DAYS = False
 GROUP_BY_YEAR_INSTEAD_OF_DAYS = True
 
-INCLUDE_COMMENTS = True
-
-ADD_GROUPED_SUFFIX_TO_NAMES = True
+ADD_GROUPED_SUFFIX_TO_NAMES = False#True
 
 HIDE_CAD = True
 
+WITHDRAWAL = ["Withdrawal", "Other Fee", "Provide Liquidity", "Return LP Token", "Expense (non taxable)", "Stolen", "Other Expense", "Send Collateral", "Spend", "Donation", "Lost"]
+DEPOSIT = ["Deposit", "Staking", "Remove Liquidity", "Receive LP Token", "Airdrop", "Income (non taxable)", "Other Income", "Income", "LP Rewards", "Reward / Bonus", "Interest Income", "Receive Collateral", "Gift / Tip"]
+
+TRANSFER_OUT = WITHDRAWAL#["Withdrawal", "Provide Liquidity", "Return LP Token", "Send Collateral"]
+TRANSFER_IN = DEPOSIT#["Deposit", "Remove Liquidity", "Receive LP Token", "Receive Collateral"]#"Staking"
+
+# Remaining are mostly: Trade
+
 # ========================================================================================
 def run_uts():
-    retVal = subprocess.run(['python', '-m', 'unittest', 'discover', '.']).returncode == 0
+    #retVal = subprocess.run(['python', '-m', 'unittest', 'discover', '.']).returncode == 0
+    retVal = subprocess.run(['python', 'test_cointracking.py']).returncode == 0
     
     return retVal
      
 # ========================================================================================
 class Record(object):
 
-    def __init__(self, type, buyamt, buycur, buyeur, sellamt, sellcur, selleur, exchange, date, feeamt, feecur, group, comment):
+    def __init__(self, type, buyamt, buycur, buyeur, sellamt, sellcur, selleur, exchange, date, feeamt, feecur, group, comment, trade_timestamp):
     
         # TODOOOOOOOOOOOOOO scientific notation!!
         self.type = type
@@ -41,6 +49,7 @@ class Record(object):
         self.selleur = Decimal(selleur) if selleur else Decimal(0.0)
         self.exchange = exchange
         self.date = date
+        self.trade_timestamp = trade_timestamp
         self.day = date.strip().split(' ')[0]
         if GROUP_BY_MONTH_INSTEAD_OF_DAYS:
             self.day = self.day[:7]
@@ -73,7 +82,11 @@ class Record(object):
                
 # ========================================================================================                                 
     def key(self):
-        if INCLUDE_COMMENTS:
+        include_comments = True
+        if self.exchange in ["osmosis_blockchain", "Binance", "Hoo"]:
+            include_comments = False
+            
+        if include_comments:
             return "{},{},{},{},{},{},{}".format(self.exchange, self.day, self.type, self.buycur, self.sellcur, self.feecur, self.comment ) # Does this prevent combining trades with a comment?
         else:
             return "{},{},{},{},{},{}".format(self.exchange, self.day, self.type, self.buycur, self.sellcur, self.feecur )
@@ -91,14 +104,14 @@ class Record(object):
                         self.sellamt, self.sellcur, 
                         self.buyamt, self.buycur,
                         self.feeamt, self.feecur )
-            elif self.type in ["Deposit", "Staking", "Remove Liquidity", "Receive LP Token", "Airdrop", "Income (non taxable)", "Other Income", "Income", "LP Rewards", "Reward / Bonus", "Interest Income", "Receive Collateral", "Gift / Tip"]:
+            elif self.type in DEPOSIT:
                 if self.feeamt == Decimal(0.0):
                     return "{:^24} @ {}: {:22} {:17.8f} {:5}".format(self.exchange, self.date, self.type,
                         self.buyamt, self.buycur)
                 else:
                     return "{:^24} @ {}: {:22} {:17.8f} {:5}, [{} {} Fee]".format(self.exchange, self.date, self.type,
                         self.buyamt, self.buycur, self.feeamt, self.feecur)            
-            elif self.type in ["Withdrawal", "Other Fee", "Provide Liquidity", "Return LP Token", "Expense (non taxable)", "Stolen", "Other Expense", "Send Collateral", "Spend", "Donation", "Lost"]:
+            elif self.type in WITHDRAWAL:
                 if self.feeamt == Decimal(0.0):
                     return "{:^24} @ {}: {:22} {:17.8f} {:5}".format(self.exchange, self.date, self.type,
                         self.sellamt, self.sellcur)
@@ -118,14 +131,14 @@ class Record(object):
                         self.buyamt, self.buycur,
                         self.selleur, self.buyeur, 
                         self.feeamt, self.feecur )
-            elif self.type in ["Deposit", "Staking", "Remove Liquidity", "Receive LP Token", "Airdrop", "Income (non taxable)", "Other Income", "Income", "LP Rewards", "Reward / Bonus", "Interest Income", "Receive Collateral", "Gift / Tip", "Lost"]:
+            elif self.type in DEPOSIT:
                 if self.feeamt == Decimal(0.0):
                     return "{:^24} @ {}: {:22} {:17.8f} {:5} ({:8.2f}$)".format(self.exchange, self.date, self.type,
                         self.buyamt, self.buycur, self.buyeur)
                 else:
                     return "{:^24} @ {}: {:22} {:17.8f} {:5} ({:8.2f}$), [{} {} Fee]".format(self.exchange, self.date, self.type,
                         self.buyamt, self.buycur, self.buyeur, self.feeamt, self.feecur)            
-            elif self.type in ["Withdrawal", "Other Fee", "Provide Liquidity", "Return LP Token", "Expense (non taxable)", "Stolen", "Other Expense", "Send Collateral", "Spend", "Donation"]:
+            elif self.type in WITHDRAWAL:
                 if self.feeamt == Decimal(0.0):
                     return "{:^24} @ {}: {:22} {:17.8f} {:5} ({:8.2f}$)".format(self.exchange, self.date, self.type,
                         self.sellamt, self.sellcur, self.selleur)
@@ -172,7 +185,8 @@ class Record(object):
             self.feeamt + other.feeamt, 
             self.feecur, 
             self.group, 
-            self.comment)
+            self.comment,
+            other.trade_timestamp)
     # other.date (or self.date) will screw up some withdrawal/deposit values? So I need to do it only on old exchanges that I stopped using?
 
 # ========================================================================================
@@ -190,10 +204,10 @@ def append_suffix(filename, suffix):
     return "{0}_{2}.{1}".format(*filename.rsplit('.', 1) + [suffix])
     
 # ========================================================================================
-def group_xml(args, xml_in, csv_out):
-
+def group_xml(args, xml_in, dumb_group_for_early_dates=True):
     if args.simple_group:
         output = []
+        exchange_trades_input_count = 0
     else:
         output = {}
         exchange_trades_input_count = {}
@@ -216,7 +230,7 @@ def group_xml(args, xml_in, csv_out):
     
     username = root.find("./export_detail/username")
     print(username.text)
-    assert(username.text == "MG-062022")
+    assert(username.text == args.username)
     account_currency = root.find("./export_detail/account_currency")
     print(account_currency.text)
     assert(account_currency.text == "CAD")
@@ -224,16 +238,12 @@ def group_xml(args, xml_in, csv_out):
     trades = root.find('./export_trades')
     prev_day = ""
             
+    all_records = []
     for t in trades:
         trade = {}
         for i in t.iter():
             trade[i.tag] = i.text
-            #print(i.tag, i.text)
-            
-        #def __init__(self, buyamt, buycur, buyeur, sellamt, sellcur, selleur, exchange, date):
-        #print(trade)
         
-        #record = Record(*row)
         record = Record(
             trade['type'],
             trade['buy_amount'], 
@@ -247,10 +257,19 @@ def group_xml(args, xml_in, csv_out):
             trade['fee_amount'], 
             trade['fee_cur'], 
             trade['group'], 
-            trade['comment'])
+            trade['comment'],
+            trade['trade_timestamp'])
         if args.verbose_input:
             print(record)
-                        
+        all_records.append(record)
+        
+    # Sort by <trade_timestamp>
+    all_records.sort(key=lambda x: x.trade_timestamp, reverse=False)
+    
+    last_day = all_records[-1].day
+    print(f"last_day {last_day}")
+    
+    for record in all_records:
         # TO ADD to the class?
         #Maybe only combine if no comments    
         
@@ -261,6 +280,7 @@ def group_xml(args, xml_in, csv_out):
 		#<added_timestamp>1655763208</added_timestamp>
         
         if args.simple_group:
+            exchange_trades_input_count += 1
             if previous is None:
                 # first row, set as previous
                 previous = record
@@ -295,34 +315,144 @@ def group_xml(args, xml_in, csv_out):
             if not record.exchange in exchange_trades_input_count:
                 exchange_trades_input_count[record.exchange] = 0
             exchange_trades_input_count[record.exchange]+=1
+                                 
+            k = record.key()  
+            remove_keys = []
             
-            # TODO: Do the same thing (or something similar), for when there's a withdrawal, OR a deposit, in the same exchange...
+            is_last_group = last_day == record.day
+            is_dumb_group = dumb_group_for_early_dates and not is_last_group
+            
+            
+            if is_dumb_group:
+                record = copy(record)
+                new_date = record.date[:5]+"12-31 23:34:45"
+                record.date = new_date
+            
+            
             if prev_day != record.day:
+                
                 if args.verbose_input:
                     print("\t\t=============== Change from {} to {} ===============".format(prev_day,record.day))
-                prev_day = record.day
-                
+                prev_day = record.day                
                 print("prev_day", prev_day)
+                remove_keys = list(previous.keys())                
+            elif is_dumb_group:
+                pass
+            # Do the same thing (or something similar), for when there's a withdrawal, OR a deposit, in the same exchange...
+            elif (record.type in TRANSFER_IN) or (record.type in TRANSFER_OUT):
+                is_withdrawal = record.type in WITHDRAWAL
+                is_deposit = record.type in DEPOSIT
+                
+                # TODO: there might be a problem with Kucoing, doing Trade, then Reward/Bonus... for EVERY SINGLE TRADE! ugh... can I remove it from last trade or something?
+                currency = record.buycur if is_deposit else record.sellcur
+                exchange = record.exchange
                 
                 for prev_key in previous:                    
-                    print("prev_key", prev_key)#Ugh ... how did I do that again ... I need to make a unit test...
+                    if prev_key != k and previous[prev_key].exchange == exchange:# and is_prev_deposit != is_deposit:#previous[prev_key].type != record.type:#TODO: Same type ? Nah... that would mess up everything..
+                    
+                        is_prev_withdrawal = previous[prev_key].type in WITHDRAWAL
+                        is_prev_deposit = previous[prev_key].type in DEPOSIT
+                        # (different or trade..)
+                        if (not is_prev_withdrawal and not is_prev_deposit) or is_prev_deposit != is_deposit:
+                            #currency (do we need in the next remove_keys condition?
+                            #prev_currency = previous[prev_key].buycur if is_prev_deposit else previous[prev_key].sellcur
+                            if previous[prev_key].buycur == currency or previous[prev_key].sellcur == currency:
+                                remove_keys.append(prev_key)
+                            
+                                
+                if remove_keys:
+                    # ONLY IF there are other trades, then also remove the last deposit.
+                    # Otherwise, it won't group all deposits.
+                    
+                    # Well any transaction with the same currency, really...                
+                    if previous[prev_key].buycur == currency or previous[prev_key].sellcur == currency:
+                        if not prev_key in remove_keys:
+                            remove_keys.append(prev_key)
+            elif (record.type in WITHDRAWAL) or (record.type in DEPOSIT):
+                pass
+            else:# Trade (not deposit or withdrawal)
+                #print("TODO")
+                # If there's a trade, everything previous needs to be accounted for.
+                exchange = record.exchange
+                
+                
+                if False:#Need to make it better before adding it:
+                    to_add = None
+                    if not dumb_group_for_early_dates or is_last_group:
+                        for prev_key in previous:
+                            if prev_key != k and previous[prev_key].exchange == exchange and record.type == "Trade" and previous[prev_key].type == "Trade":
+                                if previous[prev_key].buycur == record.sellcur and previous[prev_key].sellcur == record.buycur:
+                                    # TODO::::::::: merge!
+                                    #test_to_correct += 1
+                                    #print(f"TODO: {k}\nprev: {prev_key} ({test_to_correct})")
+                                    to_add = prev_key
+                                    break
+                                
+                    ## REMOVE THIIIIIIIIIIIIIIS! This is just the test!!
+                    if to_add != None:                        
+                        # Ugh feecur...
+                    
+                        fake_record = copy(record)
+                        
+                        fake_record.buyamt = record.sellamt
+                        fake_record.buycur = record.sellcur
+                        fake_record.buyeur = record.selleur
+                        
+                        fake_record.sellamt = record.buyamt
+                        fake_record.sellcur = record.buycur
+                        fake_record.selleur = record.buyeur
+                        
+                        if fake_record.feecur != previous[to_add].feecur:
+                            fake_record.feecur = previous[to_add].feecur#record.sellcur
+                            # TODO: This is definitely wrong...                        
+                            #fake_record.buyamt -= fake_record.feeamt
+                            fake_record.feeamt = 0
+                        
+                        previous[to_add] += fake_record
+                        continue
+                
+                for prev_key in previous:
+                    if prev_key != k and previous[prev_key].exchange == exchange:# and is_prev_deposit != is_deposit:#previous[prev_key].type != record.type:#TODO: Same type ? Nah... that would mess up everything..
+                    
+                        assert record.buycur != ""
+                        assert record.sellcur != ""
+                        
+                        #TODOooooooooooooooooooooooo:
+                        # Oh wait, why not merged?
+                        # Trade	2.46340000	DOT3L	0	5.05033483	USDT	6.35566592	Kucoin Trading	2021-12-08 15:40:36	0.00504529	USDT
+                        # Trade	2.47700000	DOT3L	0	5.05044670	USDT	6.35580671	Kucoin Trading	2021-12-08 15:40:42	0.00504540	USDT
+                        # Oh there was probably a reward/bonus in-between or after or whatever... find it..
+                        # Wait, is it not adding the "current" deposit?
+                        
+                        # TODO: If same day and USD, don't care... (but not really an issue, with the dumb grouping)
+                        for currency in [record.buycur, record.sellcur]:
+                            if not prev_key in remove_keys:
+                                if previous[prev_key].buycur == currency or previous[prev_key].sellcur == currency:
+                                    remove_keys.append(prev_key)
+                
+            if remove_keys:
+                if args.verbose_input:
+                    print( "===", record, "\n [[")# record.type, exchange, currency, "\n  [[", )
+                for prev_key in remove_keys:
+                    
+                    # TODO: Don't duplicate that...
                     r = previous[prev_key]
                     if not r.exchange in output:
                         output[r.exchange] = []
                     output[r.exchange].append(r)
                     if args.verbose_input:
-                        print(prev_key, r)
-                previous = {}
-                
-            k = record.key()
-            #print(k + " ::: ")
+                        print("\t\t", prev_key, r)
+                    previous.pop(prev_key)
+                if args.verbose_input:
+                    print("  ]]")
+                    
             if k in previous:
                 if args.verbose_input_combined:
                     if not args.verbose_input:
                         print(previous[k])
                     print("\t\t\t\t\tcombining with previous({})".format(k))
                     if not args.verbose_input:
-                        print(record)
+                        print(record)                        
                         
                 previous[k] += record
                 
@@ -337,6 +467,7 @@ def group_xml(args, xml_in, csv_out):
     
     if args.simple_group:
         output.append(previous)
+        output.sort(key=lambda x: x.trade_timestamp, reverse=False)
     else:
         print("\t\t=============== output from {} ===============".format(record.day))
         # Same as above:
@@ -345,26 +476,39 @@ def group_xml(args, xml_in, csv_out):
             if not r.exchange in output:
                 output[r.exchange] = []
             output[r.exchange].append(r)
+        for key in output:
+            output[key].sort(key=lambda x: x.trade_timestamp, reverse=False)
+    
+    return output, exchange_trades_input_count, all_records
     
     
+# ========================================================================================
+def write_output(args, output, exchange_trades_input_count, csv_out):
     if output:
+        total_in = 0
+        total_out = 0
         if args.verbose_output:
             print("\n\t = = = = = = = = = =    S A V I N G    T O    F I L E    = = = = = = = = = =\n")
         if args.simple_group:
             write_csv(args, csv_out, output)
-            print("Exported {} records (from {} input records)".format(len(output), len(trades)))
+            print("Exported {} records (from {} input records)".format(len(output), exchange_trades_input_count))
+            total_in = exchange_trades_input_count
+            total_out = len(output)
         else:
             for o in output:
                 write_csv(args, append_suffix(csv_out, "grouped_"+o+"_"+str(exchange_trades_input_count[o])+"_to_" +str(len(output[o]))), output[o])# TODO: Better name
                 print("Exported {} records (from {} input records) for {}".format(len(output[o]), exchange_trades_input_count[o], o))
+                total_in += exchange_trades_input_count[o]
+                total_out += len(output[o])
             
-
-
-                      
+        print("Exported total {} records (from {} input records)".format(total_out, total_in))
+       
 # ========================================================================================
-def main(): 
-    parser = argparse.ArgumentParser(description='Budget')
-
+def get_args():
+    parser = argparse.ArgumentParser(description='CoinTracking')
+    
+    parser.add_argument('--username', action='store', type=str, default="TEST",
+                        help='The username of the export to parse.')
     parser.add_argument('--utOnly',
                         action="store_true", default=False,
                         help='Unit tests')
@@ -379,8 +523,12 @@ def main():
     parser.add_argument('--short',
                         action="store_true", default=False)
     #parser.add_argument('--currency', default="CAD")
-           
-    args = parser.parse_args()
+    return parser.parse_args()
+    
+                      
+# ========================================================================================
+def main(): 
+    args = get_args()
     
     if not run_uts():
         print(" ========================================================== ")
@@ -395,9 +543,12 @@ def main():
         print("")
                 
         if args.short:
-            group_xml(args, "CoinTracking_Trade_Table_SHORT.xml", "CoinTracking_Trade_Table_SHORT.csv")
+            output, exchange_trades_input_count, all_records = group_xml(args, "CoinTracking_Trade_Table_SHORT.xml")
+            write_output(args, output, exchange_trades_input_count, "CoinTracking_Trade_Table_SHORT.csv")
         else:
-            group_xml(args, "CoinTracking_Trade_Table.xml", "CoinTracking_Trade_Table.csv")
+            output, exchange_trades_input_count, all_records = group_xml(args, "CoinTracking_Trade_Table.xml")
+            write_output(args, output, exchange_trades_input_count, "CoinTracking_Trade_Table.csv")
+
     
         
  

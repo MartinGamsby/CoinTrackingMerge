@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="utf-8"?>
+<export>
+<export_detail>
+	<username>TEST</username>
+	<account_currency>CAD</account_currency>
+</export_detail>
+<export_trades>
+	<trade>
+		<type>Deposit</type>
+		<buy_amount>48.25676778</buy_amount>
+		<buy_cur>C20</buy_cur>
+		<sell_amount></sell_amount>
+		<sell_cur></sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>C20</fee_cur>
+		<buy_value_in_btc>0.00464322</buy_value_in_btc>
+		<buy_value_in_fiat>217.26034983</buy_value_in_fiat>
+		<sell_value_in_btc></sell_value_in_btc>
+		<sell_value_in_fiat></sell_value_in_fiat>
+		<trade_date>2021-05-26 16:07:27</trade_date>
+		<trade_timestamp>1622045247</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Deposit</type>
+		<buy_amount>100.00000000</buy_amount>
+		<buy_cur>USDT</buy_cur>
+		<sell_amount></sell_amount>
+		<sell_cur></sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>USDT</fee_cur>
+		<buy_value_in_btc>0.00257967</buy_value_in_btc>
+		<buy_value_in_fiat>120.65663480</buy_value_in_fiat>
+		<sell_value_in_btc></sell_value_in_btc>
+		<sell_value_in_fiat></sell_value_in_fiat>
+		<trade_date>2021-05-27 21:17:43</trade_date>
+		<trade_timestamp>1622150263</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Deposit</type>
+		<buy_amount>0.01300000</buy_amount>
+		<buy_cur>ETH</buy_cur>
+		<sell_amount></sell_amount>
+		<sell_cur></sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc>0.00092449</buy_value_in_btc>
+		<buy_value_in_fiat>43.34370596</buy_value_in_fiat>
+		<sell_value_in_btc></sell_value_in_btc>
+		<sell_value_in_fiat></sell_value_in_fiat>
+		<trade_date>2021-05-28 00:43:24</trade_date>
+		<trade_timestamp>1622162604</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Other Fee</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>0.00180430</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00012733</sell_value_in_btc>
+		<sell_value_in_fiat>5.67020226</sell_value_in_fiat>
+		<trade_date>2021-05-31 17:45:49</trade_date>
+		<trade_timestamp>1622483149</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Other Fee</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>0.00088015</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00005199</sell_value_in_btc>
+		<sell_value_in_fiat>2.15910935</sell_value_in_fiat>
+		<trade_date>2021-06-23 16:41:24</trade_date>
+		<trade_timestamp>1624466484</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Trade</type>
+		<buy_amount>36.33531495</buy_amount>
+		<buy_cur>C20</buy_cur>
+		<sell_amount>100.00000000</sell_amount>
+		<sell_cur>USDT</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc>0.00293717</buy_value_in_btc>
+		<buy_value_in_fiat>121.97867282</buy_value_in_fiat>
+		<sell_value_in_btc>0.00295849</sell_value_in_btc>
+		<sell_value_in_fiat>122.86407793</sell_value_in_fiat>
+		<trade_date>2021-06-23 16:43:20</trade_date>
+		<trade_timestamp>1624466600</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Other Fee</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>0.00277182</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00016373</sell_value_in_btc>
+		<sell_value_in_fiat>6.79959556</sell_value_in_fiat>
+		<trade_date>2021-06-23 16:43:20</trade_date>
+		<trade_timestamp>1624466600</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Other Fee</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>0.00075719</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00004473</sell_value_in_btc>
+		<sell_value_in_fiat>1.85760648</sell_value_in_fiat>
+		<trade_date>2021-06-23 16:46:08</trade_date>
+		<trade_timestamp>1624466768</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Withdrawal</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>84.59208273</sell_amount>
+		<sell_cur>C20</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>C20</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00683801</sell_value_in_btc>
+		<sell_value_in_fiat>283.97790545</sell_value_in_fiat>
+		<trade_date>2021-06-23 16:46:08</trade_date>
+		<trade_timestamp>1624466768</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Other Fee</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>0.00356313</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00025152</sell_value_in_btc>
+		<sell_value_in_fiat>19.71836828</sell_value_in_fiat>
+		<trade_date>2021-11-02 13:47:09</trade_date>
+		<trade_timestamp>1635860829</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Deposit</type>
+		<buy_amount>0.20000000</buy_amount>
+		<buy_cur>ETH</buy_cur>
+		<sell_amount></sell_amount>
+		<sell_cur></sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc>0.01485544</buy_value_in_btc>
+		<buy_value_in_fiat>1064.90969098</buy_value_in_fiat>
+		<sell_value_in_btc></sell_value_in_btc>
+		<sell_value_in_fiat></sell_value_in_fiat>
+		<trade_date>2021-11-24 20:21:14</trade_date>
+		<trade_timestamp>1637785274</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Trade</type>
+		<buy_amount>0.10000000</buy_amount>
+		<buy_cur>WETH</buy_cur>
+		<sell_amount>0.10508732</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.00508732</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc>0.00742333</buy_value_in_btc>
+		<buy_value_in_fiat>534.02886694</buy_value_in_fiat>
+		<sell_value_in_btc>0.00779851</sell_value_in_btc>
+		<sell_value_in_fiat>561.01903850</sell_value_in_fiat>
+		<trade_date>2021-11-24 20:40:48</trade_date>
+		<trade_timestamp>1637786448</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Other Fee</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>0.00529950</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00039327</sell_value_in_btc>
+		<sell_value_in_fiat>28.29155278</sell_value_in_fiat>
+		<trade_date>2021-11-24 20:42:18</trade_date>
+		<trade_timestamp>1637786538</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Other Fee</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>0.00321929</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00023890</sell_value_in_btc>
+		<sell_value_in_fiat>17.18628921</sell_value_in_fiat>
+		<trade_date>2021-11-24 20:43:34</trade_date>
+		<trade_timestamp>1637786614</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Other Fee</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>0.00465139</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00034518</sell_value_in_btc>
+		<sell_value_in_fiat>24.83199377</sell_value_in_fiat>
+		<trade_date>2021-11-24 20:53:15</trade_date>
+		<trade_timestamp>1637787195</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Trade</type>
+		<buy_amount>3520000.00000000</buy_amount>
+		<buy_cur>MCC7</buy_cur>
+		<sell_amount>0.09805187</sell_amount>
+		<sell_cur>WETH</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur></fee_cur>
+		<buy_value_in_btc>0.00000000</buy_value_in_btc>
+		<buy_value_in_fiat>0.00000000</buy_value_in_fiat>
+		<sell_value_in_btc>0.00727871</sell_value_in_btc>
+		<sell_value_in_fiat>523.62501115</sell_value_in_fiat>
+		<trade_date>2021-11-24 20:53:34</trade_date>
+		<trade_timestamp>1637787214</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Other Fee</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>0.02014775</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00149516</sell_value_in_btc>
+		<sell_value_in_fiat>107.56070398</sell_value_in_fiat>
+		<trade_date>2021-11-24 20:53:34</trade_date>
+		<trade_timestamp>1637787214</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Deposit</type>
+		<buy_amount>0.20000000</buy_amount>
+		<buy_cur>ETH</buy_cur>
+		<sell_amount></sell_amount>
+		<sell_cur></sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc>0.01521688</buy_value_in_btc>
+		<buy_value_in_fiat>1122.07629697</buy_value_in_fiat>
+		<sell_value_in_btc></sell_value_in_btc>
+		<sell_value_in_fiat></sell_value_in_fiat>
+		<trade_date>2021-11-29 20:35:39</trade_date>
+		<trade_timestamp>1638218139</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Airdrop</type>
+		<buy_amount>1824630.24008000</buy_amount>
+		<buy_cur>MCC7</buy_cur>
+		<sell_amount></sell_amount>
+		<sell_cur></sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur></fee_cur>
+		<buy_value_in_btc>0.00000000</buy_value_in_btc>
+		<buy_value_in_fiat>0.00000000</buy_value_in_fiat>
+		<sell_value_in_btc></sell_value_in_btc>
+		<sell_value_in_fiat></sell_value_in_fiat>
+		<trade_date>2021-11-30 03:25:34</trade_date>
+		<trade_timestamp>1638242734</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Trade</type>
+		<buy_amount>32000000.00000000</buy_amount>
+		<buy_cur>MCC7</buy_cur>
+		<sell_amount>0.23388450</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.01055823</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc>0.00000000</buy_value_in_btc>
+		<buy_value_in_fiat>0.00000000</buy_value_in_fiat>
+		<sell_value_in_btc>0.01852461</sell_value_in_btc>
+		<sell_value_in_fiat>1379.49936405</sell_value_in_fiat>
+		<trade_date>2021-11-30 13:13:52</trade_date>
+		<trade_timestamp>1638278032</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Other Fee</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>0.00505434</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00040782</sell_value_in_btc>
+		<sell_value_in_fiat>24.77325428</sell_value_in_fiat>
+		<trade_date>2021-12-13 18:15:21</trade_date>
+		<trade_timestamp>1639419321</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Deposit</type>
+		<buy_amount>0.20788584</buy_amount>
+		<buy_cur>ETH</buy_cur>
+		<sell_amount></sell_amount>
+		<sell_cur></sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc>0.01673410</buy_value_in_btc>
+		<buy_value_in_fiat>1003.36542415</buy_value_in_fiat>
+		<sell_value_in_btc></sell_value_in_btc>
+		<sell_value_in_fiat></sell_value_in_fiat>
+		<trade_date>2021-12-14 16:43:34</trade_date>
+		<trade_timestamp>1639500214</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Trade</type>
+		<buy_amount>0.00000000</buy_amount>
+		<buy_cur>ETH</buy_cur>
+		<sell_amount>37344630.24008000</sell_amount>
+		<sell_cur>MCC7</sell_cur>
+		<fee_amount>0.02330792</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc>0.00000000</buy_value_in_btc>
+		<buy_value_in_fiat>0.00000000</buy_value_in_fiat>
+		<sell_value_in_btc>0.00013668</sell_value_in_btc>
+		<sell_value_in_fiat>8.23123499</sell_value_in_fiat>
+		<trade_date>2021-12-14 17:50:28</trade_date>
+		<trade_timestamp>1639504228</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Other Fee</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>0.00573200</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00046234</sell_value_in_btc>
+		<sell_value_in_fiat>27.84307647</sell_value_in_fiat>
+		<trade_date>2021-12-14 17:50:28</trade_date>
+		<trade_timestamp>1639504228</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Trade</type>
+		<buy_amount>45097721.34300000</buy_amount>
+		<buy_cur>MCC8</buy_cur>
+		<sell_amount>0.19319670</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.01181433</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc>0.00000000</buy_value_in_btc>
+		<buy_value_in_fiat>0.00000000</buy_value_in_fiat>
+		<sell_value_in_btc>0.01558311</sell_value_in_btc>
+		<sell_value_in_fiat>938.44729707</sell_value_in_fiat>
+		<trade_date>2021-12-14 17:51:48</trade_date>
+		<trade_timestamp>1639504308</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Other Fee</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>0.00565252</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00046430</sell_value_in_btc>
+		<sell_value_in_fiat>27.20701890</sell_value_in_fiat>
+		<trade_date>2022-01-05 14:51:45</trade_date>
+		<trade_timestamp>1641394305</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Deposit</type>
+		<buy_amount>0.73374020</buy_amount>
+		<buy_cur>ETH</buy_cur>
+		<sell_amount></sell_amount>
+		<sell_cur></sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc>0.05635015</buy_value_in_btc>
+		<buy_value_in_fiat>2989.68200232</buy_value_in_fiat>
+		<sell_value_in_btc></sell_value_in_btc>
+		<sell_value_in_fiat></sell_value_in_fiat>
+		<trade_date>2022-01-08 01:52:21</trade_date>
+		<trade_timestamp>1641606741</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Trade</type>
+		<buy_amount>10863.60000000</buy_amount>
+		<buy_cur>REFI</buy_cur>
+		<sell_amount>0.44864043</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.02820692</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc>0.00088726</buy_value_in_btc>
+		<buy_value_in_fiat>47.07396969</buy_value_in_fiat>
+		<sell_value_in_btc>0.03445491</sell_value_in_btc>
+		<sell_value_in_fiat>1828.02050077</sell_value_in_fiat>
+		<trade_date>2022-01-08 01:57:19</trade_date>
+		<trade_timestamp>1641607039</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Trade</type>
+		<buy_amount>0.00000100</buy_amount>
+		<buy_cur>CAD</buy_cur>
+		<sell_amount>10863.60000000</sell_amount>
+		<sell_cur>REFI_DIV</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur></fee_cur>
+		<buy_value_in_btc>0.00000000</buy_value_in_btc>
+		<buy_value_in_fiat>0.00000100</buy_value_in_fiat>
+		<sell_value_in_btc>0.00000000</sell_value_in_btc>
+		<sell_value_in_fiat>0.00000000</sell_value_in_fiat>
+		<trade_date>2022-01-08 01:57:20</trade_date>
+		<trade_timestamp>1641607040</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment>Manual entry - can't sell (project failed) - wrong date in transaction</comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Trade</type>
+		<buy_amount>1110.60000000</buy_amount>
+		<buy_cur>GY</buy_cur>
+		<sell_amount>0.20340643</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.02632927</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc>0.00000000</buy_value_in_btc>
+		<buy_value_in_fiat>0.00000000</buy_value_in_fiat>
+		<sell_value_in_btc>0.01562131</sell_value_in_btc>
+		<sell_value_in_fiat>828.79547543</sell_value_in_fiat>
+		<trade_date>2022-01-08 02:01:09</trade_date>
+		<trade_timestamp>1641607269</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Expense (non taxable)</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>0.01904957</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.00904957</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00145877</sell_value_in_btc>
+		<sell_value_in_fiat>79.00773218</sell_value_in_fiat>
+		<trade_date>2022-01-13 16:14:13</trade_date>
+		<trade_timestamp>1642090453</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment>rekt (or something like that) fee -- I got nothing from it in the end</comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Deposit</type>
+		<buy_amount>90.23075198</buy_amount>
+		<buy_cur>C20</buy_cur>
+		<sell_amount></sell_amount>
+		<sell_cur></sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>C20</fee_cur>
+		<buy_value_in_btc>0.00864599</buy_value_in_btc>
+		<buy_value_in_fiat>450.69315205</buy_value_in_fiat>
+		<sell_value_in_btc></sell_value_in_btc>
+		<sell_value_in_fiat></sell_value_in_fiat>
+		<trade_date>2022-01-18 17:12:10</trade_date>
+		<trade_timestamp>1642525930</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Other Fee</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>0.00432737</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00029951</sell_value_in_btc>
+		<sell_value_in_fiat>15.38108147</sell_value_in_fiat>
+		<trade_date>2022-02-28 16:15:59</trade_date>
+		<trade_timestamp>1646064959</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Trade</type>
+		<buy_amount>0.00001000</buy_amount>
+		<buy_cur>CAD</buy_cur>
+		<sell_amount>1110.60000000</sell_amount>
+		<sell_cur>GY</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur></fee_cur>
+		<buy_value_in_btc>0.00000000</buy_value_in_btc>
+		<buy_value_in_fiat>0.00001000</buy_value_in_fiat>
+		<sell_value_in_btc>0.00032269</sell_value_in_btc>
+		<sell_value_in_fiat>15.73796342</sell_value_in_fiat>
+		<trade_date>2022-02-01 02:01:09</trade_date>
+		<trade_timestamp>1643680869</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment>Can't sell (project gone)</comment>
+		<added_timestamp>1655763223</added_timestamp>
+	</trade>
+	<trade>
+		<type>Trade</type>
+		<buy_amount>434724795.49968743</buy_amount>
+		<buy_cur>PEPE4</buy_cur>
+		<sell_amount>0.05882820</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.00482820</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc>0.00362995</buy_value_in_btc>
+		<buy_value_in_fiat>133.29771952</buy_value_in_fiat>
+		<sell_value_in_btc>0.00400122</sell_value_in_btc>
+		<sell_value_in_fiat>146.93115979</sell_value_in_fiat>
+		<trade_date>2023-04-22 01:59:23</trade_date>
+		<trade_timestamp>1682128763</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1682275622</added_timestamp>
+	</trade>
+	<trade>
+		<type>Other Fee</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>0.00200175</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00013476</sell_value_in_btc>
+		<sell_value_in_fiat>5.00785671</sell_value_in_fiat>
+		<trade_date>2023-04-24 12:58:47</trade_date>
+		<trade_timestamp>1682341127</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1682342497</added_timestamp>
+	</trade>
+	<trade>
+		<type>Trade</type>
+		<buy_amount>0.11679962</buy_amount>
+		<buy_cur>ETH</buy_cur>
+		<sell_amount>200000000.00000000</sell_amount>
+		<sell_cur>PEPE4</sell_cur>
+		<fee_amount>0.01304824</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc>0.00755827</buy_value_in_btc>
+		<buy_value_in_fiat>291.92842464</buy_value_in_fiat>
+		<sell_value_in_btc>0.00965800</sell_value_in_btc>
+		<sell_value_in_fiat>373.02769460</sell_value_in_fiat>
+		<trade_date>2023-05-01 13:06:23</trade_date>
+		<trade_timestamp>1682946383</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1683024497</added_timestamp>
+	</trade>
+	<trade>
+		<type>Trade</type>
+		<buy_amount>0.00001000</buy_amount>
+		<buy_cur>CAD</buy_cur>
+		<sell_amount>45097721.34300000</sell_amount>
+		<sell_cur>MCC8</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur></fee_cur>
+		<buy_value_in_btc>0.00000000</buy_value_in_btc>
+		<buy_value_in_fiat>0.00001000</buy_value_in_fiat>
+		<sell_value_in_btc>0.00000000</sell_value_in_btc>
+		<sell_value_in_fiat>0.00000000</sell_value_in_fiat>
+		<trade_date>2021-12-14 17:51:49</trade_date>
+		<trade_timestamp>1639504309</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment>Manual entry - can't sell (project failed) - wrong date in transaction</comment>
+		<added_timestamp>1694130870</added_timestamp>
+	</trade>
+	<trade>
+		<type>Withdrawal</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>90.23075198</sell_amount>
+		<sell_cur>C20</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur></fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00050094</sell_value_in_btc>
+		<sell_value_in_fiat>29.14229756</sell_value_in_fiat>
+		<trade_date>2022-04-05 00:51:19</trade_date>
+		<trade_timestamp>1649119879</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment>Manual entry -- it wasn't a 1-1 trade, but Invictus moved from ETH to MATIC, so it's the same. The next transaction wasn't technically an airdrop, it was the value of the C20 I had in the ETH wallet</comment>
+		<added_timestamp>1694131133</added_timestamp>
+	</trade>
+	<trade>
+		<type>Trade</type>
+		<buy_amount>0.00001000</buy_amount>
+		<buy_cur>CAD</buy_cur>
+		<sell_amount>10863.60000000</sell_amount>
+		<sell_cur>REFI</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur></fee_cur>
+		<buy_value_in_btc>0.00000000</buy_value_in_btc>
+		<buy_value_in_fiat>0.00001000</buy_value_in_fiat>
+		<sell_value_in_btc>0.00088726</sell_value_in_btc>
+		<sell_value_in_fiat>47.07416451</sell_value_in_fiat>
+		<trade_date>2022-01-08 01:57:20</trade_date>
+		<trade_timestamp>1641607040</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment>Manual entry - can't sell (project failed) - wrong date in transaction</comment>
+		<added_timestamp>1694131726</added_timestamp>
+	</trade>
+	<trade>
+		<type>Airdrop</type>
+		<buy_amount>10863.60000000</buy_amount>
+		<buy_cur>REFI_DIV</buy_cur>
+		<sell_amount></sell_amount>
+		<sell_cur></sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur></fee_cur>
+		<buy_value_in_btc>0.00000000</buy_value_in_btc>
+		<buy_value_in_fiat>0.00000000</buy_value_in_fiat>
+		<sell_value_in_btc></sell_value_in_btc>
+		<sell_value_in_fiat></sell_value_in_fiat>
+		<trade_date>2022-01-08 01:57:19</trade_date>
+		<trade_timestamp>1641607039</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1694132947</added_timestamp>
+	</trade>
+	<trade>
+		<type>Deposit</type>
+		<buy_amount>965.08539706</buy_amount>
+		<buy_cur>NEXO</buy_cur>
+		<sell_amount></sell_amount>
+		<sell_cur></sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>NEXO</fee_cur>
+		<buy_value_in_btc>0.02192307</buy_value_in_btc>
+		<buy_value_in_fiat>1844.78400315</buy_value_in_fiat>
+		<sell_value_in_btc></sell_value_in_btc>
+		<sell_value_in_fiat></sell_value_in_fiat>
+		<trade_date>2024-03-02 18:53:59</trade_date>
+		<trade_timestamp>1709405639</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1709451164</added_timestamp>
+	</trade>
+	<trade>
+		<type>Trade</type>
+		<buy_amount>0.28469370</buy_amount>
+		<buy_cur>ETH</buy_cur>
+		<sell_amount>234724795.49968743</sell_amount>
+		<sell_cur>PEPE4</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc>0.01575378</buy_value_in_btc>
+		<buy_value_in_fiat>1325.65007746</buy_value_in_fiat>
+		<sell_value_in_btc>0.01604579</sell_value_in_btc>
+		<sell_value_in_fiat>1350.22184894</sell_value_in_fiat>
+		<trade_date>2024-03-02 18:57:47</trade_date>
+		<trade_timestamp>1709405867</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1709451164</added_timestamp>
+	</trade>
+	<trade>
+		<type>Other Fee</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>0.00185977</sell_amount>
+		<sell_cur>ETH</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00010238</sell_value_in_btc>
+		<sell_value_in_fiat>8.61169098</sell_value_in_fiat>
+		<trade_date>2024-03-02 23:18:23</trade_date>
+		<trade_timestamp>1709421503</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1709451164</added_timestamp>
+	</trade>
+	<trade>
+		<type>Trade</type>
+		<buy_amount>0.38620501</buy_amount>
+		<buy_cur>ETH</buy_cur>
+		<sell_amount>965.08539706</sell_amount>
+		<sell_cur>NEXO</sell_cur>
+		<fee_amount>0.00723852</fee_amount>
+		<fee_cur>ETH</fee_cur>
+		<buy_value_in_btc>0.02126148</buy_value_in_btc>
+		<buy_value_in_fiat>1788.32769644</buy_value_in_fiat>
+		<sell_value_in_btc>0.02176406</sell_value_in_btc>
+		<sell_value_in_fiat>1830.60068464</sell_value_in_fiat>
+		<trade_date>2024-03-02 23:19:35</trade_date>
+		<trade_timestamp>1709421575</trade_timestamp>
+		<tradeid>x</tradeid>
+		<exchange>ETH Wallet</exchange>
+		<group>MetaMask ETH</group>
+		<comment></comment>
+		<added_timestamp>1709451164</added_timestamp>
+	</trade>
+</export_trades>
+</export>
