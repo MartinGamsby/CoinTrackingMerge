@@ -63,21 +63,28 @@ class Record(object):
 
 # ========================================================================================
     def xml_header(self):
-        return '"Type", "Buy Amount", "Buy Currency", "Buy Value in Account Currency", "Sell Amount", "Sell Currency", "Sell Value in Account Currency", "Exchange", "Date", "Fee", "Fee Currency", "Trade-Group", "Comment"'
+        # Cointracking is stupid, it needs to be in THAT ORDER:
+        return '"Type", "Buy Amount", "Buy Currency", "Sell Amount", "Sell Currency", "Fee", "Fee Currency", "Exchange", "Trade-Group", "Comment", "Date", "Tx-ID", "Buy Value in Account Currency", "Sell Value in Account Currency", "Liquidity pool"'
+        #return '"Type", "Buy Amount", "Buy Currency", "Buy Value in Account Currency", "Sell Amount", "Sell Currency", "Sell Value in Account Currency", "Exchange", "Date", "Fee", "Fee Currency", "Trade-Group", "Comment"'
             #"Tx-ID", "Liquidity pool"
         
 # ========================================================================================
     def xml(self):
-        return "{},{},{},{},{},{},{},{},{},{},{},{},{}".format(self.type, self.buyamt, 
+        return '"{}","{}","{}","{}","{}","{}","{}","{}","{}","{}","{}","{}","{}","{}","{}"'.format(self.type, self.buyamt, 
                                                 self.buycur if self.buycur else "", 
-                                                self.buyeur, self.sellamt,
+                                                self.sellamt,
                                                 self.sellcur if self.sellcur else "", 
-                                                self.selleur, 
-                                                self.exchange + ("_GROUPED" if ADD_GROUPED_SUFFIX_TO_NAMES else ""), 
-                                                self.date, self.feeamt, 
+                                                self.feeamt,
                                                 self.feecur if self.feecur else "", 
+                                                self.exchange + ("_GROUPED" if ADD_GROUPED_SUFFIX_TO_NAMES else ""), 
                                                 self.group if self.group else "", 
-                                                self.comment if self.comment else "")
+                                                self.comment.replace('"','\"') if self.comment else "",
+                                                self.date, 
+                                                "",#Tx-ID
+                                                self.buyeur,
+                                                self.selleur,
+                                                ""#Liquidity pool
+                                                )
                                                 
                
 # ========================================================================================                                 
@@ -165,6 +172,14 @@ class Record(object):
         res = self.type == other.type and self.buycur == other.buycur and self.sellcur == other.sellcur and \
             self.feecur == other.feecur and \
             self.exchange == other.exchange and self.day == other.day
+            #(self.feecur == other.feecur or self.feecur == None or other.feecur == None) and
+        #print(f"res: {res}, "
+        #    f"t:{self.type == other.type}, "
+        #    f"bc:{self.buycur == other.buycur}, "
+        #    f"sc:{self.sellcur == other.sellcur}, "
+        #    f"fc:{self.feecur == other.feecur}, "
+        #    f"ex:{self.exchange == other.exchange}, "
+        #    f"day:{self.day == other.day} {self.day} {other.day}")
         return res
 
 # ========================================================================================
@@ -172,7 +187,12 @@ class Record(object):
         """
         Adds two records by adding amounts only.
         """
+        
+        # self:  Other Fee,0,,0,0.00268445,ETH,7.82931161,ETH Wallet,2023-12-31 23:34:45,0,ETH,MetaMask ETH,
+        # other: Other Fee,0,,0,0.00277182,ETH,6.79959556,ETH Wallet,2023-12-31 23:34:45,0E-8,ETH,MetaMask ETH,
+        
         if self != other: # __equ__ doesn't test everything... maybe I should do that differently... (Another method, use that for the check in the code too?
+            #print(f"\nself:  {self.xml()}\nother: {other.xml()}")
             raise RuntimeError("Need to be the same type and currencies")
         return Record(self.type, self.buyamt + other.buyamt, 
             self.buycur, 
@@ -204,7 +224,7 @@ def append_suffix(filename, suffix):
     return "{0}_{2}.{1}".format(*filename.rsplit('.', 1) + [suffix])
     
 # ========================================================================================
-def group_xml(args, xml_in, dumb_group_for_early_dates=True):
+def group_xml(args, xml_in, dumb_group_for_early_dates=True, group_dumb_groups=False):
     if args.simple_group:
         output = []
         exchange_trades_input_count = 0
@@ -325,8 +345,17 @@ def group_xml(args, xml_in, dumb_group_for_early_dates=True):
             
             if is_dumb_group:
                 record = copy(record)
-                new_date = record.date[:5]+"12-31 23:34:45"
+                
+                if group_dumb_groups:
+                    new_day = str(int(last_day)-1)
+                    new_date = new_day+"-12-31 23:34:45"
+                    #print(f"new_date: '{new_date}''"+record.date[:5]+"12-31 23:34:45"+"'")
+                    record.day = new_day
+                else:
+                    new_date = record.date[:5]+"12-31 23:34:45"
+                    
                 record.date = new_date
+                
             
             
             if prev_day != record.day:
@@ -495,11 +524,19 @@ def write_output(args, output, exchange_trades_input_count, csv_out):
             total_in = exchange_trades_input_count
             total_out = len(output)
         else:
+            all_outputs = []
             for o in output:
                 write_csv(args, append_suffix(csv_out, "grouped_"+o+"_"+str(exchange_trades_input_count[o])+"_to_" +str(len(output[o]))), output[o])# TODO: Better name
                 print("Exported {} records (from {} input records) for {}".format(len(output[o]), exchange_trades_input_count[o], o))
                 total_in += exchange_trades_input_count[o]
                 total_out += len(output[o])
+                
+                #if o not in ["Okex Trading", "BitBuy", "Coinbase Pro"]:
+                all_outputs.extend(output[o])
+            
+            write_csv(args, append_suffix(csv_out, "all_"+"_"+str(total_in)+"_to_" +str(len(all_outputs))), all_outputs)
+            print("Exported {} records (from {} input records) for all".format(total_out, total_in))
+            
             
         print("Exported total {} records (from {} input records)".format(total_out, total_in))
        
