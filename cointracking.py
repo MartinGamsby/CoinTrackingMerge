@@ -232,8 +232,7 @@ def group_xml(args, xml_in, dumb_group_for_early_dates=True, group_dumb_groups=F
         output = {}
         exchange_trades_input_count = {}
     previous = None
-    header = None
-
+    
     
     # TODO: Read xml instead of csv!!
     # (Or convert xml to csv?)
@@ -557,8 +556,8 @@ def get_args():
                         action="store_true", default=False)
     parser.add_argument('--simple_group',
                         action="store_true", default=False)
-    parser.add_argument('--short',
-                        action="store_true", default=False)
+    parser.add_argument('--filename', action='store', type=str, default="CoinTracking_Trade_Table.xml",
+                        help='The file of the input to parse.')
     #parser.add_argument('--currency', default="CAD")
     return parser.parse_args()
     
@@ -579,12 +578,10 @@ def main():
         print(" ========================================================== ")
         print("")
                 
-        if args.short:
-            output, exchange_trades_input_count, all_records = group_xml(args, "CoinTracking_Trade_Table_SHORT.xml")
-            write_output(args, output, exchange_trades_input_count, "CoinTracking_Trade_Table_SHORT.csv")
-        else:
-            output, exchange_trades_input_count, all_records = group_xml(args, "CoinTracking_Trade_Table.xml")
-            write_output(args, output, exchange_trades_input_count, "CoinTracking_Trade_Table.csv")
+        output, exchange_trades_input_count, all_records = group_xml(args, args.filename)
+        write_output(args, output, exchange_trades_input_count, "CoinTracking_Trade_Table.csv")
+        #output, exchange_trades_input_count, all_records = group_xml(args, r"C:\Users\Martin\Downloads\Martin-shakepay-2025-01-13-crypto_transactions_summary-STRIPPED-converted.xml")
+        #write_output(args, output, exchange_trades_input_count, "Martin-shakepay-2025-01-13-crypto_transactions_summary-STRIPPED-converted.csv")
 
     
         
