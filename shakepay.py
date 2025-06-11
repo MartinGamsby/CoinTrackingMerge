@@ -75,12 +75,17 @@ def convert_csv(input_file, output_file):
         sys.exit(1)
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
+    if len(sys.argv) != 4:
         print("Usage: python script.py input.csv output.csv")
         sys.exit(1)
     
     input_file = sys.argv[1]
     output_file = sys.argv[2]
+    output_file2 = sys.argv[3]
     
     convert_csv(input_file, output_file)
+    
+    #retVal = subprocess.run(['python', 'cointracking.py', '--username', 'MG-062022', '--filename', output_file2]).returncode == 0
+    #C:\Users\Martin\Downloads\Martin-shakepay-2025-01-13-crypto_transactions_summary-STRIPPED-converted.csv
+    
     print(f"Conversion completed successfully. Output written to {output_file}")
