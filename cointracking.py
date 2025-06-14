@@ -224,7 +224,7 @@ def append_suffix(filename, suffix):
     return "{0}_{2}.{1}".format(*filename.rsplit('.', 1) + [suffix])
     
 # ========================================================================================
-def group_xml(args, xml_in, dumb_group_for_early_dates=True, group_dumb_groups=False):
+def group_xml(args, xml_in, dumb_group_for_early_dates=True, group_dumb_groups=False, dont_group_with_dep=True):
     if args.simple_group:
         output = []
         exchange_trades_input_count = 0
@@ -365,6 +365,9 @@ def group_xml(args, xml_in, dumb_group_for_early_dates=True, group_dumb_groups=F
                 print("prev_day", prev_day)
                 remove_keys = list(previous.keys())                
             elif is_dumb_group:
+                for prev_key in previous:
+                    if dont_group_with_dep and prev_key == k and (record.type == "Withdrawal" or record.type == "Deposit"):
+                        remove_keys.append(prev_key)
                 pass
             # Do the same thing (or something similar), for when there's a withdrawal, OR a deposit, in the same exchange...
             elif (record.type in TRANSFER_IN) or (record.type in TRANSFER_OUT):
@@ -376,8 +379,9 @@ def group_xml(args, xml_in, dumb_group_for_early_dates=True, group_dumb_groups=F
                 exchange = record.exchange
                 
                 for prev_key in previous:                    
-                    if prev_key != k and previous[prev_key].exchange == exchange:# and is_prev_deposit != is_deposit:#previous[prev_key].type != record.type:#TODO: Same type ? Nah... that would mess up everything..
-                    
+                    if dont_group_with_dep and prev_key == k and (record.type == "Withdrawal" or record.type == "Deposit"):
+                        remove_keys.append(prev_key)
+                    elif prev_key != k and previous[prev_key].exchange == exchange:# and is_prev_deposit != is_deposit:#previous[prev_key].type != record.type:#TODO: Same type ? Nah... that would mess up everything..                    
                         is_prev_withdrawal = previous[prev_key].type in WITHDRAWAL
                         is_prev_deposit = previous[prev_key].type in DEPOSIT
                         # (different or trade..)
@@ -577,11 +581,14 @@ def main():
         print(" ======================= PASSED UTS ======================= ")
         print(" ========================================================== ")
         print("")
-                
-        output, exchange_trades_input_count, all_records = group_xml(args, args.filename)
-        write_output(args, output, exchange_trades_input_count, "CoinTracking_Trade_Table.csv")
-        #output, exchange_trades_input_count, all_records = group_xml(args, r"C:\Users\Martin\Downloads\Martin-shakepay-2025-01-13-crypto_transactions_summary-STRIPPED-converted.xml")
-        #write_output(args, output, exchange_trades_input_count, "Martin-shakepay-2025-01-13-crypto_transactions_summary-STRIPPED-converted.csv")
+        
+        if args.username == "TEST":
+            print("Please specify a username with --username")
+        else:
+            output, exchange_trades_input_count, all_records = group_xml(args, args.filename)
+            write_output(args, output, exchange_trades_input_count, "CoinTracking_Trade_Table.csv")
+            #output, exchange_trades_input_count, all_records = group_xml(args, r"C:\Users\Martin\Downloads\Martin-shakepay-2025-01-13-crypto_transactions_summary-STRIPPED-converted.xml")
+            #write_output(args, output, exchange_trades_input_count, "Martin-shakepay-2025-01-13-crypto_transactions_summary-STRIPPED-converted.csv")
 
     
         

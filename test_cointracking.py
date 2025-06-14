@@ -112,9 +112,49 @@ class TestCT(unittest.TestCase):
             for record in output[o]:
                 print(record)
 
+
+# ========================================================================================
+    def test_3deposits_dont_merge(self):
+        output, exchange_trades_input_count, all_records = CT.group_xml(CT.get_args(), "test_3deposits.xml", dont_group_with_dep=True)
+        
+        #self.print_input(all_records)
+        #self.print_output(output, exchange_trades_input_count)
+        # TODO: Don't use a bool like that...
+        if CT.GROUP_BY_YEAR_INSTEAD_OF_DAYS:
+            records2 = output["Binance"]
+            self.assertEqual(len(records2), 4)
+            self.compare_xml(records2, 
+""""Type", "Buy Amount", "Buy Currency", "Sell Amount", "Sell Currency", "Fee", "Fee Currency", "Exchange", "Trade-Group", "Comment", "Date", "Tx-ID", "Buy Value in Account Currency", "Sell Value in Account Currency", "Liquidity pool"\n\
+"Withdrawal","0","","2500.00000000","BUSD","0E-8","BUSD","Binance","","","2021-12-31 23:34:45","","0","3190.50255040",""
+"Withdrawal","0","","500.00000000","BUSD","0E-8","BUSD","Binance","","","2021-12-31 23:34:45","","0","641.60190400",""
+"Withdrawal","0","","601.00000000","USDT","1.00000000","USDT","Binance","","","2021-12-31 23:34:45","","0","761.22140105",""
+"Deposit","2500.00000000","BUSD","0","","0E-8","BUSD","Binance","","","2022-01-06 18:22:00","","3170.29744583","0",""
+""")
+
+
+# ========================================================================================
+    def test_2deposits_dont_merge(self):
+        output, exchange_trades_input_count, all_records = CT.group_xml(CT.get_args(), "test_2deposits.xml", dont_group_with_dep=True)
+        self.assertEqual(exchange_trades_input_count["Coinbase Staking"], 2)
+        
+        #self.print_input(all_records)
+        #self.print_output(output, exchange_trades_input_count)
+                
+        records = output["Coinbase Staking"]
+        # TODO: Don't use a bool like that...
+        if CT.GROUP_BY_YEAR_INSTEAD_OF_DAYS:
+            self.assertEqual(len(records), 2)
+            
+            self.compare_xml(records, 
+""""Type", "Buy Amount", "Buy Currency", "Sell Amount", "Sell Currency", "Fee", "Fee Currency", "Exchange", "Trade-Group", "Comment", "Date", "Tx-ID", "Buy Value in Account Currency", "Sell Value in Account Currency", "Liquidity pool"\n\
+"Deposit","10.00000000","SOL2","0","","0E-8","SOL2","Coinbase Staking","","","2024-04-05 00:17:25","","2486.99658263","0",""
+"Deposit","5.00000000","SOL2","0","","0E-8","SOL2","Coinbase Staking","","","2024-04-09 16:57:17","","1174.20963049","0",""
+""")
+
+
 # ========================================================================================
     def test_2deposits(self):
-        output, exchange_trades_input_count, all_records = CT.group_xml(CT.get_args(), "test_2deposits.xml")
+        output, exchange_trades_input_count, all_records = CT.group_xml(CT.get_args(), "test_2deposits.xml", dont_group_with_dep=False)
         self.assertEqual(exchange_trades_input_count["Coinbase Staking"], 2)
         
         #self.print_input(all_records)
@@ -129,14 +169,10 @@ class TestCT(unittest.TestCase):
             self.assertEqual(merged.buyamt, 15.0)
             self.assertEqual(merged.buyeur, Decimal('3661.20621312'))
             
-            
-            # This found that it was the WRONG date! It should be the last one.
-            # Because the xml isn't sorted in trade time. It's by ... added time or something.
             self.compare_xml(records, 
     '"Type", "Buy Amount", "Buy Currency", "Sell Amount", "Sell Currency", "Fee", "Fee Currency", "Exchange", "Trade-Group", "Comment", "Date", "Tx-ID", "Buy Value in Account Currency", "Sell Value in Account Currency", "Liquidity pool"\n\
 "Deposit","15.00000000","SOL2","0","","0","SOL2","Coinbase Staking","","","2024-04-09 16:57:17","","3661.20621312","0",""\n')
-                    
-            #write_output(args, output, "test_2deposits.csv")
+
 
 # ========================================================================================
     def test_coinbase(self):
@@ -188,16 +224,18 @@ class TestCT(unittest.TestCase):
         records = output["Coinbase"]
         
         if CT.GROUP_BY_YEAR_INSTEAD_OF_DAYS:
-            self.assertEqual(len(records), 18)
+            self.assertEqual(len(records), 20)
         
             self.compare_xml(records, 
 '"Type", "Buy Amount", "Buy Currency", "Sell Amount", "Sell Currency", "Fee", "Fee Currency", "Exchange", "Trade-Group", "Comment", "Date", "Tx-ID", "Buy Value in Account Currency", "Sell Value in Account Currency", "Liquidity pool"\n\
 "Deposit","50.00000000","CAD","0","","0E-8","","Coinbase","","direct trading funds","2021-12-31 23:34:45","","50.00000000","0",""\n\
+"Withdrawal","0","","0.00078641","BTC","0E-8","BTC","Coinbase","","","2021-12-31 23:34:45","","0","47.91681062",""\n\
 "Deposit","0.00078641","BTC","0","","0E-8","BTC","Coinbase","","","2021-12-31 23:34:45","","47.91681062","0",""\n\
 "Spend","0","","0.00030228","BTC","0.00004762","BTC","Coinbase","","Coinbase Commerce order receipt: ","2021-12-31 23:34:45","","0","18.09482540",""\n\
+"Withdrawal","0","","0.00048413","BTC","0E-8","BTC","Coinbase","","","2021-12-31 23:34:45","","0","33.37531220",""\n\
 "Trade","0.00517832","BTC","350.00000000","CAD","13.50000000","CAD","Coinbase","","","2021-12-31 23:34:45","","330.17489668","349.99987986",""\n\
 "Deposit","300.00000000","CAD","0","","0E-8","CAD","Coinbase","","direct trading funds","2021-12-31 23:34:45","","299.99983561","0",""\n\
-"Withdrawal","0","","0.00566245","BTC","0.00002338","BTC","Coinbase","","","2021-12-31 23:34:45","","0","363.55020888",""\n\
+"Withdrawal","0","","0.00439191","BTC","0.00002338","BTC","Coinbase","","","2021-12-31 23:34:45","","0","282.25808606",""\n\
 "Deposit","1.20000000","ATOM2","0","","0E-8","ATOM2","Coinbase","","","2021-12-31 23:34:45","","19.76221302","0",""\n\
 "Withdrawal","0","","1.20000000","ATOM2","0.00250000","ATOM2","Coinbase","","","2021-12-31 23:34:45","","0","19.76221302",""\n\
 "Deposit","0.00001258","BTC","0","","0E-8","BTC","Coinbase","","","2022-12-31 23:34:45","","0.27341687","0",""\n\
@@ -212,6 +250,7 @@ class TestCT(unittest.TestCase):
 "Staking","0.09954981","SOL2","0","","0","SOL2","Coinbase","","","2024-06-04 06:35:51","","20.67178207","0",""\n')
 
 
+
 # ========================================================================================
     def test_coinbase3(self):
         # group_dumb_groups is the only difference from test_coinbase2
@@ -224,16 +263,18 @@ class TestCT(unittest.TestCase):
         records = output["Coinbase"]
         
         if CT.GROUP_BY_YEAR_INSTEAD_OF_DAYS:
-            self.assertEqual(len(records), 18)
+            self.assertEqual(len(records), 20)
         
             self.compare_xml(records, 
 '"Type", "Buy Amount", "Buy Currency", "Sell Amount", "Sell Currency", "Fee", "Fee Currency", "Exchange", "Trade-Group", "Comment", "Date", "Tx-ID", "Buy Value in Account Currency", "Sell Value in Account Currency", "Liquidity pool"\n\
 "Deposit","50.00000000","CAD","0","","0E-8","","Coinbase","","direct trading funds","2023-12-31 23:34:45","","50.00000000","0",""\n\
+"Withdrawal","0","","0.00078641","BTC","0E-8","BTC","Coinbase","","","2023-12-31 23:34:45","","0","47.91681062",""\n\
 "Deposit","0.00078641","BTC","0","","0E-8","BTC","Coinbase","","","2023-12-31 23:34:45","","47.91681062","0",""\n\
 "Spend","0","","0.00030228","BTC","0.00004762","BTC","Coinbase","","Coinbase Commerce order receipt: ","2023-12-31 23:34:45","","0","18.09482540",""\n\
+"Withdrawal","0","","0.00048413","BTC","0E-8","BTC","Coinbase","","","2023-12-31 23:34:45","","0","33.37531220",""\n\
 "Trade","0.00517832","BTC","350.00000000","CAD","13.50000000","CAD","Coinbase","","","2023-12-31 23:34:45","","330.17489668","349.99987986",""\n\
 "Deposit","300.00000000","CAD","0","","0E-8","CAD","Coinbase","","direct trading funds","2023-12-31 23:34:45","","299.99983561","0",""\n\
-"Withdrawal","0","","0.00566245","BTC","0.00002338","BTC","Coinbase","","","2023-12-31 23:34:45","","0","363.55020888",""\n\
+"Withdrawal","0","","0.00439191","BTC","0.00002338","BTC","Coinbase","","","2023-12-31 23:34:45","","0","282.25808606",""\n\
 "Deposit","1.20000000","ATOM2","0","","0E-8","ATOM2","Coinbase","","","2023-12-31 23:34:45","","19.76221302","0",""\n\
 "Withdrawal","0","","1.20000000","ATOM2","0.00250000","ATOM2","Coinbase","","","2023-12-31 23:34:45","","0","19.76221302",""\n\
 "Deposit","0.00001258","BTC","0","","0E-8","BTC","Coinbase","","","2023-12-31 23:34:45","","0.27341687","0",""\n\
@@ -318,19 +359,22 @@ class TestCT(unittest.TestCase):
         
         # TODO: Don't use a bool like that...
         if CT.GROUP_BY_YEAR_INSTEAD_OF_DAYS:
-            self.assertEqual(len(records), 31)
+            self.assertEqual(len(records), 34)
         
             self.compare_xml(records, 
 """"Type", "Buy Amount", "Buy Currency", "Sell Amount", "Sell Currency", "Fee", "Fee Currency", "Exchange", "Trade-Group", "Comment", "Date", "Tx-ID", "Buy Value in Account Currency", "Sell Value in Account Currency", "Liquidity pool"\n\
 "Deposit","48.25676778","C20","0","","0E-8","C20","ETH Wallet","MetaMask ETH","","2021-12-31 23:34:45","","217.26034983","0",""
 "Deposit","100.00000000","USDT","0","","0E-8","USDT","ETH Wallet","MetaMask ETH","","2021-12-31 23:34:45","","120.65663480","0",""
+"Deposit","0.01300000","ETH","0","","0E-8","ETH","ETH Wallet","MetaMask ETH","","2021-12-31 23:34:45","","43.34370596","0",""
 "Trade","36.33531495","C20","100.00000000","USDT","0E-8","ETH","ETH Wallet","MetaMask ETH","","2021-12-31 23:34:45","","121.97867282","122.86407793",""
 "Withdrawal","0","","84.59208273","C20","0E-8","C20","ETH Wallet","MetaMask ETH","","2021-12-31 23:34:45","","0","283.97790545",""
+"Deposit","0.20000000","ETH","0","","0E-8","ETH","ETH Wallet","MetaMask ETH","","2021-12-31 23:34:45","","1064.90969098","0",""
 "Trade","0.10000000","WETH","0.10508732","ETH","0.00508732","ETH","ETH Wallet","MetaMask ETH","","2021-12-31 23:34:45","","534.02886694","561.01903850",""
 "Trade","3520000.00000000","MCC7","0.09805187","WETH","0E-8","","ETH Wallet","MetaMask ETH","","2021-12-31 23:34:45","","0E-8","523.62501115",""
+"Deposit","0.20000000","ETH","0","","0E-8","ETH","ETH Wallet","MetaMask ETH","","2021-12-31 23:34:45","","1122.07629697","0",""
 "Airdrop","1824630.24008000","MCC7","0","","0E-8","","ETH Wallet","MetaMask ETH","","2021-12-31 23:34:45","","0E-8","0",""
 "Trade","32000000.00000000","MCC7","0.23388450","ETH","0.01055823","ETH","ETH Wallet","MetaMask ETH","","2021-12-31 23:34:45","","0E-8","1379.49936405",""
-"Deposit","0.62088584","ETH","0","","0","ETH","ETH Wallet","MetaMask ETH","","2021-12-31 23:34:45","","3233.69511806","0",""
+"Deposit","0.20788584","ETH","0","","0E-8","ETH","ETH Wallet","MetaMask ETH","","2021-12-31 23:34:45","","1003.36542415","0",""
 "Other Fee","0","","0.05388086","ETH","0","ETH","ETH Wallet","MetaMask ETH","","2021-12-31 23:34:45","","0","266.69175242",""
 "Trade","0E-8","ETH","37344630.24008000","MCC7","0.02330792","ETH","ETH Wallet","MetaMask ETH","","2021-12-31 23:34:45","","0E-8","8.23123499",""
 "Trade","45097721.34300000","MCC8","0.19319670","ETH","0.01181433","ETH","ETH Wallet","MetaMask ETH","","2021-12-31 23:34:45","","0E-8","938.44729707",""
@@ -368,19 +412,22 @@ class TestCT(unittest.TestCase):
         
         # TODO: Don't use a bool like that...
         if CT.GROUP_BY_YEAR_INSTEAD_OF_DAYS:
-            self.assertEqual(len(records), 31)
+            self.assertEqual(len(records), 34)
         
             self.compare_xml(records, 
 """"Type", "Buy Amount", "Buy Currency", "Sell Amount", "Sell Currency", "Fee", "Fee Currency", "Exchange", "Trade-Group", "Comment", "Date", "Tx-ID", "Buy Value in Account Currency", "Sell Value in Account Currency", "Liquidity pool"\n\
 "Deposit","48.25676778","C20","0","","0E-8","C20","ETH Wallet","MetaMask ETH","","2023-12-31 23:34:45","","217.26034983","0",""
 "Deposit","100.00000000","USDT","0","","0E-8","USDT","ETH Wallet","MetaMask ETH","","2023-12-31 23:34:45","","120.65663480","0",""
+"Deposit","0.01300000","ETH","0","","0E-8","ETH","ETH Wallet","MetaMask ETH","","2023-12-31 23:34:45","","43.34370596","0",""
 "Trade","36.33531495","C20","100.00000000","USDT","0E-8","ETH","ETH Wallet","MetaMask ETH","","2023-12-31 23:34:45","","121.97867282","122.86407793",""
 "Withdrawal","0","","84.59208273","C20","0E-8","C20","ETH Wallet","MetaMask ETH","","2023-12-31 23:34:45","","0","283.97790545",""
+"Deposit","0.20000000","ETH","0","","0E-8","ETH","ETH Wallet","MetaMask ETH","","2023-12-31 23:34:45","","1064.90969098","0",""
 "Trade","0.10000000","WETH","0.10508732","ETH","0.00508732","ETH","ETH Wallet","MetaMask ETH","","2023-12-31 23:34:45","","534.02886694","561.01903850",""
 "Trade","3520000.00000000","MCC7","0.09805187","WETH","0E-8","","ETH Wallet","MetaMask ETH","","2023-12-31 23:34:45","","0E-8","523.62501115",""
+"Deposit","0.20000000","ETH","0","","0E-8","ETH","ETH Wallet","MetaMask ETH","","2023-12-31 23:34:45","","1122.07629697","0",""
 "Airdrop","1824630.24008000","MCC7","0","","0E-8","","ETH Wallet","MetaMask ETH","","2023-12-31 23:34:45","","0E-8","0",""
 "Trade","32000000.00000000","MCC7","0.23388450","ETH","0.01055823","ETH","ETH Wallet","MetaMask ETH","","2023-12-31 23:34:45","","0E-8","1379.49936405",""
-"Deposit","0.62088584","ETH","0","","0","ETH","ETH Wallet","MetaMask ETH","","2023-12-31 23:34:45","","3233.69511806","0",""
+"Deposit","0.20788584","ETH","0","","0E-8","ETH","ETH Wallet","MetaMask ETH","","2023-12-31 23:34:45","","1003.36542415","0",""
 "Other Fee","0","","0.05388086","ETH","0","ETH","ETH Wallet","MetaMask ETH","","2023-12-31 23:34:45","","0","266.69175242",""
 "Trade","0E-8","ETH","37344630.24008000","MCC7","0.02330792","ETH","ETH Wallet","MetaMask ETH","","2023-12-31 23:34:45","","0E-8","8.23123499",""
 "Trade","45097721.34300000","MCC8","0.19319670","ETH","0.01181433","ETH","ETH Wallet","MetaMask ETH","","2023-12-31 23:34:45","","0E-8","938.44729707",""

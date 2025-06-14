@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<export>
+<export_detail>
+	<username>TEST</username>
+	<account_currency>CAD</account_currency>
+</export_detail>
+<export_trades>
+	<trade>
+		<type>Deposit</type>
+		<buy_amount>2500.00000000</buy_amount>
+		<buy_cur>BUSD</buy_cur>
+		<sell_amount></sell_amount>
+		<sell_cur></sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>BUSD</fee_cur>
+		<buy_value_in_btc>0.05827878</buy_value_in_btc>
+		<buy_value_in_fiat>3170.29744583</buy_value_in_fiat>
+		<sell_value_in_btc></sell_value_in_btc>
+		<sell_value_in_fiat></sell_value_in_fiat>
+		<trade_date>2022-01-06 18:22:00</trade_date>
+		<trade_timestamp>1641493320</trade_timestamp>
+		<tradeid>1</tradeid>
+		<exchange>Binance</exchange>
+		<group></group>
+		<comment></comment>
+		<added_timestamp>1655763032</added_timestamp>
+	</trade>
+	<trade>
+		<type>Withdrawal</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>601.00000000</sell_amount>
+		<sell_cur>USDT</sell_cur>
+		<fee_amount>1.00000000</fee_amount>
+		<fee_cur>USDT</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.01236263</sell_value_in_btc>
+		<sell_value_in_fiat>761.22140105</sell_value_in_fiat>
+		<trade_date>2021-12-10 02:46:56</trade_date>
+		<trade_timestamp>1639104416</trade_timestamp>
+		<tradeid>2</tradeid>
+		<exchange>Binance</exchange>
+		<group></group>
+		<comment></comment>
+		<added_timestamp>1655763032</added_timestamp>
+	</trade>
+	<trade>
+		<type>Withdrawal</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>500.00000000</sell_amount>
+		<sell_cur>BUSD</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>BUSD</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.00879263</sell_value_in_btc>
+		<sell_value_in_fiat>641.60190400</sell_value_in_fiat>
+		<trade_date>2021-12-02 20:27:50</trade_date>
+		<trade_timestamp>1638476870</trade_timestamp>
+		<tradeid>3</tradeid>
+		<exchange>Binance</exchange>
+		<group></group>
+		<comment></comment>
+		<added_timestamp>1655763032</added_timestamp>
+	</trade>
+	<trade>
+		<type>Withdrawal</type>
+		<buy_amount></buy_amount>
+		<buy_cur></buy_cur>
+		<sell_amount>2500.00000000</sell_amount>
+		<sell_cur>BUSD</sell_cur>
+		<fee_amount>0.00000000</fee_amount>
+		<fee_cur>BUSD</fee_cur>
+		<buy_value_in_btc></buy_value_in_btc>
+		<buy_value_in_fiat></buy_value_in_fiat>
+		<sell_value_in_btc>0.04300712</sell_value_in_btc>
+		<sell_value_in_fiat>3190.50255040</sell_value_in_fiat>
+		<trade_date>2021-11-30 14:09:38</trade_date>
+		<trade_timestamp>1638281378</trade_timestamp>
+		<tradeid>4</tradeid>
+		<exchange>Binance</exchange>
+		<group></group>
+		<comment></comment>
+		<added_timestamp>1655763032</added_timestamp>
+	</trade>
+</export_trades>
+</export>
